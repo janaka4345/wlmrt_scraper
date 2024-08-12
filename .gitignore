@@ -1,0 +1,20 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+/.venv/
+
+# IDE-Specific files
+.vscode/
+
+# Test results
+*.log
+test-results/
+
+#.env varables
+/.env*
