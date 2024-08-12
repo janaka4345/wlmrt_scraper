@@ -9,7 +9,7 @@ load_dotenv()
 # from scrapy.utils.project import get_project_settings
 # process = CrawlerProcess(settings={settings})
 
-# keyword = input("What is your input? ")
+keyword = input("What is your input? ")
 
 process = CrawlerProcess(
     settings={
@@ -26,16 +26,13 @@ process = CrawlerProcess(
         "DOWNLOADER_MIDDLEWARES": {
             "walmartscraper.walmartscraper.middlewares.ScrapeOpsFakeBrowserHeadersMiddleware": 400
         },
-        # "REQUEST_FINGERPRINTER_IMPLEMENTATION": "2.7",
-        # "TWISTED_REACTOR": "twisted.internet.asyncioreactor.AsyncioSelectorReactor",
-        # "FEED_EXPORT_ENCODING": "utf-8",
+        "REQUEST_FINGERPRINTER_IMPLEMENTATION": "2.7",
+        "TWISTED_REACTOR": "twisted.internet.asyncioreactor.AsyncioSelectorReactor",
+        "FEED_EXPORT_ENCODING": "utf-8",
         "SCRAPEOPS_API_KEY": os.environ.get("SECRET_KEY"),
         "SCRAPEOPS_FAKE_HEADERS_ENABLED": "True",
     }
 )
 
-# process.crawl(WalmartspiderSpider, keyword=keyword)
-process.crawl(
-    WalmartspiderSpider,
-)
+process.crawl(WalmartspiderSpider, keyword=keyword)
 process.start()
