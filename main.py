@@ -9,7 +9,8 @@ load_dotenv()
 # from scrapy.utils.project import get_project_settings
 # process = CrawlerProcess(settings={settings})
 
-keyword = input("What is your input? ")
+keyword = input("What is your product name? ")
+# keyword = "headphones"
 
 process = CrawlerProcess(
     settings={
@@ -19,12 +20,13 @@ process = CrawlerProcess(
                 "overwrite": False,
             }
         },
-        # "ITEM_PIPELINES": {
-        #     "amazonscraper.amazonscraper.pipelines.AmazonscraperDataCleanPipeline": 300,
-        # },
+        "ITEM_PIPELINES": {
+            "walmartscraper.walmartscraper.pipelines.WalmartscraperCleanupPipeline": 300,
+        },
         "ROBOTSTXT_OBEY": "False",
         "DOWNLOADER_MIDDLEWARES": {
-            "walmartscraper.walmartscraper.middlewares.ScrapeOpsFakeBrowserHeadersMiddleware": 400
+            "walmartscraper.walmartscraper.middlewares.ScrapeOpsFakeBrowserHeadersMiddleware": 400,
+            "scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk": 725,
         },
         "REQUEST_FINGERPRINTER_IMPLEMENTATION": "2.7",
         "TWISTED_REACTOR": "twisted.internet.asyncioreactor.AsyncioSelectorReactor",
