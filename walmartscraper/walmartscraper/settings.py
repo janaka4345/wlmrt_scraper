@@ -61,7 +61,7 @@ FEEDS = (
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     #    "walmartscraper.middlewares.WalmartscraperDownloaderMiddleware": 543,
-    "walmartscraper.walmartscraper.middlewares.ScrapeOpsFakeBrowserHeadersMiddleware": 400,
+    "walmartscraper.middlewares.ScrapeOpsFakeBrowserHeadersMiddleware": 400,
     "scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk": 725,
 }
 

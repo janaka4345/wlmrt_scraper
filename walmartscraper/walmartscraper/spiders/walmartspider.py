@@ -4,7 +4,7 @@ import scrapy
 import json
 from urllib.parse import urlencode
 import math
-from walmartscraper.walmartscraper.items import WalmartproductItem
+from walmartscraper.items import WalmartproductItem
 
 load_dotenv()
 
