@@ -48,11 +48,22 @@ ROBOTSTXT_OBEY = False
 #    "walmartscraper.middlewares.WalmartscraperSpiderMiddleware": 543,
 # }
 
+FEEDS = (
+    {
+        "data_%(time)s.json": {
+            "format": "json",
+            "overwrite": False,
+        }
+    },
+)
+
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    "walmartscraper.middlewares.WalmartscraperDownloaderMiddleware": 543,
-# }
+DOWNLOADER_MIDDLEWARES = {
+    #    "walmartscraper.middlewares.WalmartscraperDownloaderMiddleware": 543,
+    "walmartscraper.walmartscraper.middlewares.ScrapeOpsFakeBrowserHeadersMiddleware": 400,
+    "scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk": 725,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -62,9 +73,10 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    "walmartscraper.pipelines.WalmartscraperPipeline": 300,
-# }
+ITEM_PIPELINES = {
+    #    "walmartscraper.pipelines.WalmartscraperPipeline": 300,
+    "walmartscraper.pipelines.WalmartscraperCleanupPipeline": 300
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -91,3 +103,5 @@ ROBOTSTXT_OBEY = False
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
+SCRAPEOPS_FAKE_HEADERS_ENABLED = True
+SCRAPEOPS_PROXY_ENABLED = True

@@ -14,6 +14,10 @@ class WalmartspiderSpider(scrapy.Spider):
     allowed_domains = ["walmart.com", "scrapeops.io"]
     page = 1
 
+    settings = {
+        "SCRAPEOPS_API_KEY": os.environ.get("SECRET_KEY"),
+    }
+
     def __init__(self, keyword=None, *args, **kwargs):
         super(WalmartspiderSpider, self).__init__(*args, **kwargs)
         self.keyword = keyword
